@@ -3,24 +3,42 @@ import 'colors'
 import wd from 'wd'
 import {assert} from 'chai'
 
-const username = process.env.KOBITON_USERNAME
-const apiKey = process.env.KOBITON_API_KEY
+// const username = process.env.KOBITON_USERNAME
+// const apiKey = process.env.KOBITON_API_KEY
+const username = 'chuanvo'
+const apiKey = '8b75feca-91b9-4245-9814-72eda11815f7'
 const deviceName = process.env.KOBITON_DEVICE_NAME || 'Galaxy*'
 
 const kobitonServerConfig = {
   protocol: 'https',
-  host: 'api.kobiton.com',
+  host: 'api-test.kobiton.com',
   auth: `${username}:${apiKey}`
 }
 
+// const desiredCaps = {
+//   sessionName:        'Automation test session',
+//   sessionDescription: 'This is an example for Android web', 
+//   deviceOrientation:  'portrait',  
+//   captureScreenshots: true, 
+//   browserName:        'chrome', 
+//   deviceGroup:        'KOBITON', 
+//   deviceName:         deviceName,
+//   platformName:       'Android', 
+//   platformVersion:    '4.4.4'
+// }
 const desiredCaps = {
+  // The generated session will be visible to you only. 
   sessionName:        'Automation test session',
-  sessionDescription: 'This is an example for Android web', 
-  deviceOrientation:  'portrait',  
-  captureScreenshots: true, 
-  browserName:        'chrome', 
-  deviceGroup:        'KOBITON', 
-  deviceName:         deviceName,
+  sessionDescription: '',
+  deviceOrientation:  'portrait',
+  captureScreenshots: true,
+  browserName:        'chrome',
+  deviceGroup:        'KOBITON',
+  // For deviceName, platformVersion Kobiton supports wildcard
+  // character *, with 3 formats: *text, text* and *text*
+  // If there is no *, Kobiton will match the exact text provided
+  deviceName:         'Galaxy*',
+  platformVersion:    '*',
   platformName:       'Android'
 }
 
